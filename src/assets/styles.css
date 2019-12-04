@@ -1,0 +1,26 @@
+.ul-no-bullets {
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+}
+.link:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.animation{
+    transition: all 0.5s;
+}
+
+.test {
+    display: inline-block;
+}
+
+/* .course-item:nth-child(even) {
+    background-color: rgba(0,0,0,.03);
+}
+.course-item:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.11);
+} */
