@@ -9,6 +9,7 @@ import { CourseItemComponent} from './course/app.course-item';
 import { CourseService } from './services/course.service';
 import {ClickStopPropagation} from './stop-propagation'
 import { RateComponent } from './rate_stars/rate.component';
+import { AddCourseComponent } from './add_course_form/add-course.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RateComponent } from './rate_stars/rate.component';
     CourseListComponent,
     CourseItemComponent,
     ClickStopPropagation,
-    RateComponent
+    RateComponent,
+    AddCourseComponent
   ],
   imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [CourseService],
