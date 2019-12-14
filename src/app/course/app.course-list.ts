@@ -24,9 +24,12 @@ export class CourseListComponent implements OnInit {
     }
 
     removeCourseFromList(courseToDelete: Course): void {
+        this.courses.forEach(
 
-        this.courses.forEach(function(course,index,all) {
-            if(courseToDelete.id == course.id)all.splice(index, 1);
-        }); 
+            function(course,index,all) {
+                if(courseToDelete.id == course.id)all.splice(index, 1);
+            }
+
+        ); 
     } 
 }

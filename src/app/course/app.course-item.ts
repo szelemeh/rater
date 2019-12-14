@@ -12,6 +12,7 @@ import { Course } from '../models/Course'
 })
 export class CourseItemComponent {
     @ViewChild('card', {static: false}) card: ElementRef;
+    @ViewChild('ratemessage', {static: false}) rateMessage: ElementRef;
     @Input() course: Course;
     isCollapsed = true;
     @Output() removeCourse = new EventEmitter<Course>();
@@ -35,6 +36,13 @@ export class CourseItemComponent {
             this.isCollapsed = true;
         }
         
+    }
+
+    changeRateMessage() {
+        this.rateMessage.nativeElement.innerHTML = "Your rate: ";
+    }
+    addNewRate(newRate: number) {
+        //implement the function
     }
 
     

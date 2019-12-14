@@ -3,8 +3,8 @@ import { Course } from '../models/Course'
 import { MockCourseData } from '../mock/mock-course-data'
 
 @Injectable({
-    providedIn: 'root',
-   })
+    providedIn: 'root'
+})
 
 export class CourseService {
     private courses: Course[] = MockCourseData.Courses;

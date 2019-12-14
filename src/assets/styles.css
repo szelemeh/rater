@@ -18,9 +18,7 @@
     display: inline-block;
 }
 
-/* .course-item:nth-child(even) {
-    background-color: rgba(0,0,0,.03);
+.star-rate {
+    width: 30px;
+    display: inline-block;
 }
-.course-item:nth-child(odd) {
-    background-color: rgba(0, 0, 0, 0.11);
-} */

@@ -13,6 +13,6 @@ export interface Course {
     classForm: ClassForm;
     maxStudentNumber: number;
     rate: number;
-    imagePath: string;
+    imagePath: string; 
     description: string;
 }
