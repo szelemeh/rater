@@ -53,12 +53,21 @@ export class AddCourseComponent {
                     Validators.min(30),
                     Validators.max(300)
                 ]
+            ),
+            logo:    new FormControl(
+                "", [
+                    Validators.required,
+                    Validators.pattern("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?")
+                ]
             )
         });
     }
 
     onSubmit() {
-        console.log("model-based form submitted");
-        console.log(this.form);
+        if(this.form.valid){
+            console.log("model-based form submitted");
+            console.log(this.form);
+        }
+        
     }
 }
