@@ -20,7 +20,7 @@ export class CourseListComponent implements OnInit {
     constructor(private service: CourseService) { }
     
     getCourses(): void {
-        this.courses = this.service.getCourses();
+        this.service.currentCourses.subscribe(courses => this.courses = courses)
     }
 
     removeCourseFromList(courseToDelete: Course): void {

@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Course } from '../models/Course'
+import { Course, ClassForm } from '../models/Course'
+import { CourseService } from '../services/course.service'
 
 
 @Component({
@@ -12,9 +13,19 @@ import { Course } from '../models/Course'
 })
 export class AddCourseComponent {
     form: FormGroup;
-    course: Course;
+    course: Course = {
+        id: null,
+        courseName: null,
+        numberOfEtcs: null,
+        semester: null,
+        classForm: null,
+        maxStudentNumber: null,
+        rate: null,
+        imagePath: null,
+        description: null
+    };
     
-    constructor() {
+    constructor(private coursesService: CourseService) {
         this.form = new FormGroup({
             courseName: new FormControl(
                 "", [
@@ -65,9 +76,34 @@ export class AddCourseComponent {
 
     onSubmit() {
         if(this.form.valid){
-            console.log("model-based form submitted");
-            console.log(this.form);
+            this.fillOutCourse();
+            this.coursesService.addCourse(this.course);
+            this.emptyCourse();
         }
-        
+    }
+
+    fillOutCourse() {
+        this.course.id = new Date().getTime();
+        this.course.courseName=this.form.controls.courseName.value;
+        this.course.numberOfEtcs = this.form.controls.etcs.value;
+        this.course.semester = this.form.controls.semester.value;
+        this.course.classForm = this.form.controls.classForm.value;
+        this.course.maxStudentNumber = this.form.controls.capacity.value;
+        this.course.imagePath = this.form.controls.logo.value;
+        this.course.description = this.form.controls.courseDescr.value;
+    }
+
+    emptyCourse() {
+        this.course = {
+            id: null,
+            courseName: null,
+            numberOfEtcs: null,
+            semester: null,
+            classForm: null,
+            maxStudentNumber: null,
+            rate: null,
+            imagePath: null,
+            description: null
+        };
     }
 }
