@@ -1,0 +1,12 @@
+<section class="m-3 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+    <div>
+        <input 
+            type="email" 
+            class="form-control form-control-sm ml-3 w-75 input-lg" 
+            style="display: inline;" 
+            placeholder="Start typing name of course">
+        <span #toggleBtn class="glyphicon glyphicon-chevron-down w-1" (click)="onToggle()"></span>
+    </div>
+    <div class="card w-75" style="margin: 0 auto;" *ngIf="showMoreOptions">Content to render when condition is true.</div>
+</section>
+
