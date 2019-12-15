@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { CourseListComponent} from './course/app.course-list';
 import { CourseItemComponent} from './course/app.course-item';
 import { CourseService } from './services/course.service';
-import {ClickStopPropagation} from './stop-propagation'
+import { ClickStopPropagation } from './stop-propagation'
 import { RateComponent } from './rate_stars/rate.component';
 import { AddCourseComponent } from './add_course_form/add-course.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AddCourseComponent } from './add_course_form/add-course.component';
     RateComponent,
     AddCourseComponent
   ],
-  imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [ BrowserModule, AppRoutingModule, FormsModule],
   providers: [CourseService],
   bootstrap: [AppComponent, CourseListComponent]
 })

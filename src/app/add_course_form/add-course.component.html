@@ -1,48 +1,85 @@
 <section class="row m-3">
     <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3 card">
         <h1>Add course</h1>
-        <form [formGroup]="form" autocomplete="off" novalidate>
-            <div class="form-group">
+        <form>
+            <div >
                 <label class="float-left">Course name</label>
-                <input formControlName="courseName" class="form-control" placeholder="Enter course name">
+                
+                <input 
+                    name = "courseName"
+                    [(ngModel)]="course.courseName"
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Enter course name"
+                    required/>
             </div>
         
             <div class="form-group">
                 <label class="float-left">Course description</label>
-                <textarea formControlName="courseDescr" class="form-control" placeholder="Enter course description"></textarea>
+                <textarea
+                    type="text"
+                    name = "description"
+                    [(ngModel)]="course.description"  
+                    class="form-control" 
+                    placeholder="Enter course description"
+                    required>
+                </textarea
+
+
+                >
             </div>
         
             <div class="form-group">
                 <label class="float-left">Number of ETCS</label>
-                <input formControlName="etcs" class="form-control" placeholder="Enter number of ETCS">
+                <input
+                    name="etcs"
+                    type="number"
+                    [(ngModel)]="course.numberOfEtcs"
+                    class="form-control" 
+                    placeholder="Enter number of ETCS"
+                    required>
             </div>
         
             <div class="form-group">
                 <label class="float-left">Semester</label>
-                <input formControlName="semester" class="form-control" placeholder="Enter semester">
+                <input 
+                    name = "semester"
+                    type="number"
+                    min="1"
+                    max="10"
+                    [(ngModel)]="course.semester" 
+                    class="form-control" 
+                    placeholder="Enter semester"
+                    required>
             </div>
         
             <div class="form-group">
                 <label class="float-left">Class form</label>
-                <select formControlName="classForm" class="browser-default custom-select">
-                    <option value="LECTURE">Lecture</option>
-                    <option value="EXERCISE">Exercise</option>
-                    <option value="LAB">Lab</option>
-                    <option value="PROJECT">Project</option>
+                <select class="browser-default custom-select" name = "classFrom" required>
+                    <option *ngFor="let classForm of classFormOptions" [value]="classForm">{{classForm}}</option>
                 </select>    
             </div>
         
             <div class="form-group">
                 <label class="float-left">Course capacity</label>
-                <input formControlName="capacity" type="number" class="form-control" placeholder="Enter capacity">
+                <input 
+                    name="capacity"
+                    [(ngModel)]="course.maxStudentNumber"
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Enter capacity">
             </div>
         
             <div class="form-group">
                 <label class="float-left">Course logo</label>
-                <input formControlName="capacity" class="form-control" placeholder="Enter course logo URL">
+                <input
+                    name="logo"
+                    [(ngModel)]="course.imagePath" 
+                    class="form-control" 
+                    placeholder="Enter course logo URL">
             </div>
         
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input (click)="onSubmit()" type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
 </section>
