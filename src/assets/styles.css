@@ -14,10 +14,6 @@
     transition: all 0.5s;
 }
 
-.test {
-    display: inline-block;
-}
-
 .star-rate {
     width: 30px;
     display: inline-block;
@@ -33,4 +29,9 @@
 
 .input-lg {
     font-size: 14px;
+}
+
+.btn-sm {
+    margin-left: 30%;
+    margin-right: 30%;
 }

@@ -1,8 +1,10 @@
 <div>
     <div class = "row">
-        <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 ">
             <ul class="list-group ul-no-bullets">
-                <li *ngFor="let course of courses; let i=index" class="mb-1">
+                {{searchRates | json}}
+                <li *ngFor="let course of (getCourses() | nameSearch: searchText | rateSearch: searchRates); let i=index" 
+                    class="mb-1">
                     <app-course-item (removeCourse)="removeCourseFromList($event)" class="course-item" [course]="course"></app-course-item>
                 </li>
             </ul>

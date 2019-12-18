@@ -1,12 +1,55 @@
-<section class="m-3 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+<section class="m-3 w-80" >
     <div>
         <input 
-            type="email" 
+            name ="search"
+            [(ngModel)]="searchText"
+            (ngModelChange)="updateSearchText()"
+            type="text"
             class="form-control form-control-sm ml-3 w-75 input-lg" 
             style="display: inline;" 
             placeholder="Start typing name of course">
         <span #toggleBtn class="glyphicon glyphicon-chevron-down w-1" (click)="onToggle()"></span>
     </div>
-    <div class="card w-75" style="margin: 0 auto;" *ngIf="showMoreOptions">Content to render when condition is true.</div>
+    <div class="card w-75 card-body text-left" style="margin: 0 auto;" *ngIf="showMoreOptions">
+        <h3>Search options:</h3>
+
+        <div class="float-left">
+            <h4 class="d-inline">Course rate:</h4>
+            <span *ngFor="let showRate of courseService.getPresentRates(); let i = index">
+                <span *ngIf="showRate">
+                    {{i}}
+                    <input 
+                        type="checkbox"
+                        [(ngModel)] = "searchRates[i]">
+                </span>
+            </span>
+            {{searchRates | json}}
+        </div>
+
+        <div>
+            <h4 class="d-inline">Semester:</h4>
+            <span *ngFor="let showSem of courseService.getPresentSemesters(); let i = index">
+                <span *ngIf="showSem">
+                    {{i+1}}
+                    <input 
+                        type="checkbox"
+                        [(ngModel)] = "searchSemesters[i]">
+                </span>
+            </span>
+            {{searchSemesters | json}}
+        </div>
+
+        <div>
+            <h4 class="d-inline">ETCS:</h4>
+            <span *ngFor="let showEtcs of courseService.getPresentEtcss(); let i = index">
+                <span *ngIf="showEtcs">
+                    {{i}}
+                    <input type="checkbox">
+                </span>
+            </span>
+        </div>
+
+        <button (click)="onSearch()" class="btn btn-primary btn-sm mt-3">Search!</button>
+    </div>
 </section>
 

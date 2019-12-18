@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core'
-import {CourseService} from '../services/course.service'
+import { Component, OnInit, AfterViewInit} from '@angular/core'
+import { CourseService } from '../services/course.service'
 import { Course } from '../models/Course'
+import { CourseFilterService } from '../services/course-filter.service';
 
 @Component ({
     selector: 'app-course-list',
@@ -12,15 +13,22 @@ import { Course } from '../models/Course'
     providers: [CourseService]
 })
 
-export class CourseListComponent implements OnInit {
-    private courses: Course[]
+export class CourseListComponent implements OnInit{
+    private courses: Course[];
+    private searchText: string;
+    private searchRates: boolean[];
+    private searchSemesters: boolean[];
+
     ngOnInit(): void {
-        this.getCourses();
+        this.subscribeAttrsToExternal();
     }
-    constructor(private service: CourseService) { }
+    constructor(private service: CourseService, private filterService: CourseFilterService) { }
     
-    getCourses(): void {
-        this.service.currentCourses.subscribe(courses => this.courses = courses)
+    subscribeAttrsToExternal(): void {
+        this.service.currentCourses.subscribe(courses => this.courses = courses);
+        this.filterService.currentSearchText.subscribe(searchText => this.searchText = searchText);
+        this.filterService.currentSearchRates.subscribe(searchRates => this.searchRates = searchRates);
+        this.filterService.currentSearchSemesters.subscribe(searchSemesters => this.searchSemesters = this.searchSemesters);
     }
 
     removeCourseFromList(courseToDelete: Course): void {
@@ -32,4 +40,8 @@ export class CourseListComponent implements OnInit {
 
         ); 
     } 
+
+    getCourses() : Course[] {
+        return this.courses;
+    }
 }
