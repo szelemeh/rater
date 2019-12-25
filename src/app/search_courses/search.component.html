@@ -44,9 +44,12 @@
             <span *ngFor="let showEtcs of courseService.getPresentEtcss(); let i = index">
                 <span *ngIf="showEtcs">
                     {{i}}
-                    <input type="checkbox">
+                    <input 
+                        type="checkbox"
+                        [(ngModel)] = "searchEtcss[i]">
                 </span>
             </span>
+            {{searchEtcss | json}}
         </div>
 
         <button (click)="onSearch()" class="btn btn-primary btn-sm mt-3">Search!</button>

@@ -18,6 +18,7 @@ export class CourseListComponent implements OnInit{
     private searchText: string;
     private searchRates: boolean[];
     private searchSemesters: boolean[];
+    private searchEtcss: boolean[];
 
     ngOnInit(): void {
         this.subscribeAttrsToExternal();
@@ -28,7 +29,8 @@ export class CourseListComponent implements OnInit{
         this.service.currentCourses.subscribe(courses => this.courses = courses);
         this.filterService.currentSearchText.subscribe(searchText => this.searchText = searchText);
         this.filterService.currentSearchRates.subscribe(searchRates => this.searchRates = searchRates);
-        this.filterService.currentSearchSemesters.subscribe(searchSemesters => this.searchSemesters = this.searchSemesters);
+        this.filterService.currentSearchSemesters.subscribe(searchSemesters => this.searchSemesters = searchSemesters);
+        this.filterService.currentSearchEtcss.subscribe(searchEtcss => this.searchEtcss = searchEtcss);
     }
 
     removeCourseFromList(courseToDelete: Course): void {

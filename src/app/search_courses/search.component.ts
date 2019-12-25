@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit{
     private searchText: string;
     private searchRates: boolean[] = [];
     private searchSemesters: boolean[] = [];
+    private searchEtcss: boolean[] = [];
     
     
     ngOnInit(): void {
@@ -56,6 +57,10 @@ export class SearchComponent implements OnInit{
         console.log("click");
         this.filterService.changeSearchRates(this.searchRates);
         this.searchRates = [];
+        this.filterService.changeSearchSemesters(this.searchSemesters);
+        this.searchSemesters = [];
+        this.filterService.changeSearchEtcss(this.searchEtcss);
+        this.searchEtcss = [];
     }
 
 

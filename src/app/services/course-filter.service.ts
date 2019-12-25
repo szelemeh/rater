@@ -18,6 +18,9 @@ export class CourseFilterService {
     private searchSemestersSourse = new BehaviorSubject<boolean[]>(this.courseService.getPresentSemesters());
     currentSearchSemesters = this.searchSemestersSourse.asObservable();
 
+    private searchEtcssSourse = new BehaviorSubject<boolean[]>(this.courseService.getPresentEtcss());
+    currentSearchEtcss = this.searchEtcssSourse.asObservable();
+
     public changeSearchText(searchText: string) {
         this.searchTextSourse.next(searchText);
     }
@@ -29,5 +32,10 @@ export class CourseFilterService {
     public changeSearchSemesters(searchSemesters: boolean[]) {
         this.searchSemestersSourse.next(searchSemesters);
     }
+
+    public changeSearchEtcss(searchEtcss: boolean[]) {
+        this.searchEtcssSourse.next(searchEtcss);
+    }
+
 
   }

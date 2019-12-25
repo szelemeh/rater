@@ -14,6 +14,7 @@ import { SearchComponent } from './search_courses/search.component';
 import { NameSearchPipe } from '../pipes/name-search.pipe';
 import { RateSearchPipe } from '../pipes/rate-search.pipe';
 import { SemesterSearchPipe } from 'src/pipes/semester-search.pipe';
+import { EtcsSearchPipe } from 'src/pipes/etcs-search.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SemesterSearchPipe } from 'src/pipes/semester-search.pipe';
     SearchComponent,
     NameSearchPipe,
     RateSearchPipe,
-    SemesterSearchPipe
+    SemesterSearchPipe,
+    EtcsSearchPipe
   ],
   imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [CourseService],
