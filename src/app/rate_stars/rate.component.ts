@@ -20,6 +20,7 @@ export class RateComponent {
     userRate: number = null;
     @Input() currentRate: number;
     showingRate: number = null;
+    rateReactive: boolean = false;
 
     @ViewChild('first', {static: false}) first: ElementRef;
     @ViewChild('second', {static: false}) second: ElementRef;
@@ -31,7 +32,8 @@ export class RateComponent {
     @Output() addNewRate = new EventEmitter<number>();
     @Output() changedRate = new EventEmitter<any>();
 
-    setUserRate(newRate: number) {
+    onStarClick(newRate: number) {
+        if(!this.rateReactive)return;
         this.userRate = newRate;
         this.showingRate = this.userRate;
         this.changedRate.emit();
@@ -94,6 +96,7 @@ export class RateComponent {
     }
 
     mouseOver(index:number) {
+        if(!this.rateReactive)return;
         for(let i = index; i >= 0; i--){
             this.fillStar(this.stars[i], Fill.FULL);
         }
@@ -102,6 +105,7 @@ export class RateComponent {
         }
     }
     mouseOut(index:number) {
+        if(!this.rateReactive)return;
         this.setRate(this.showingRate);
     }
 }

@@ -45,5 +45,9 @@ export class CourseItemComponent {
         //implement the function
     }
 
+    onMore() {
+        //go to course details
+    }
+
     
 }

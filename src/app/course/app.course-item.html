@@ -16,6 +16,6 @@
       <br>
       <p #ratemessage class="card-text">Course rate:</p>
       <app-rate [currentRate]="course.rate" (addNewRate)="addNewRate($event)" (changedRate)="changeRateMessage($event)"></app-rate>
-      <a href="#" class="btn btn-primary m-2">More...</a>
+      <a href="#" (click)="onMore()" class="btn btn-primary m-2">More...</a>
     </div>
   </div>

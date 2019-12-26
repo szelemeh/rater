@@ -23,9 +23,4 @@ export class EtcsSearchPipe implements PipeTransform {
        return searchEtcss[course.numberOfEtcs];
      });
   }
-  //{
-   // return searchEtcss[course.numberOfEtcs];
-  //}
-  //
-
 }
