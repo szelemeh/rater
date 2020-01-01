@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CourseListComponent} from './course/app.course-list';
 import { CourseItemComponent} from './course/app.course-item';
@@ -16,10 +16,14 @@ import { RateSearchPipe } from '../pipes/rate-search.pipe';
 import { SemesterSearchPipe } from 'src/pipes/semester-search.pipe';
 import { EtcsSearchPipe } from 'src/pipes/etcs-search.pipe';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { HomeComponent } from './home/home.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    routingComponents,
     CourseListComponent,
     CourseItemComponent,
     ClickStopPropagation,
@@ -30,10 +34,12 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     RateSearchPipe,
     SemesterSearchPipe,
     EtcsSearchPipe,
-    CourseDetailsComponent
+    HomeComponent,
+    NavigationComponent,
+    PageNotFoundComponent,
   ],
-  imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [CourseService],
-  bootstrap: [AppComponent, CourseListComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

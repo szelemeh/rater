@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core'
 import { Course } from '../models/Course'
 import { MockCourseData } from '../mock/mock-course-data'
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, Observable, of } from 'rxjs'
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +26,22 @@ export class CourseService{
         this.updateAll();
     }
 
+    removeCourse(courseToRemove: Course): void {
+        this.courses.forEach(
+
+            function(course,index,all) {
+                
+                if(courseToRemove.id == course.id)all.splice(index, 1);
+            }
+
+        ); 
+
+        this.coursesSource.next(this.courses);
+        this.updateAll();
+        console.log('Deleted: ' + courseToRemove.courseName);
+        
+    }
+
     getPresentRates(): boolean[] {
         return this.rates;   
     }
@@ -46,5 +62,9 @@ export class CourseService{
         this.rates[Math.floor(course.rate)] = true;
         this.semesters[course.semester-1] = true;
         this.etcss[course.numberOfEtcs] = true;
+    }
+
+    getCourse(id: number): Observable<Course> {
+        return of(this.courses.find(course => course.id === id));
     }
   }

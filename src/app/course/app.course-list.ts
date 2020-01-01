@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit} from '@angular/core'
+import { Component, OnInit, AfterViewInit, OnChanges, ChangeDetectorRef} from '@angular/core'
 import { CourseService } from '../services/course.service'
 import { Course } from '../models/Course'
 import { CourseFilterService } from '../services/course-filter.service';
@@ -13,18 +13,22 @@ import { CourseFilterService } from '../services/course-filter.service';
     providers: [CourseService]
 })
 
-export class CourseListComponent implements OnInit{
+export class CourseListComponent implements OnInit, OnChanges{
     private courses: Course[];
     private searchText: string;
     private searchRates: boolean[];
     private searchSemesters: boolean[];
     private searchEtcss: boolean[];
 
+    constructor (private service: CourseService, private filterService: CourseFilterService) {}
+
     ngOnInit(): void {
         this.subscribeAttrsToExternal();
     }
-    constructor(private service: CourseService, private filterService: CourseFilterService) { }
-    
+
+    ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+        
+    }    
     subscribeAttrsToExternal(): void {
         this.service.currentCourses.subscribe(courses => this.courses = courses);
         this.filterService.currentSearchText.subscribe(searchText => this.searchText = searchText);
@@ -33,17 +37,14 @@ export class CourseListComponent implements OnInit{
         this.filterService.currentSearchEtcss.subscribe(searchEtcss => this.searchEtcss = searchEtcss);
     }
 
-    removeCourseFromList(courseToDelete: Course): void {
+    removeCourseFromList(courseToRemove: Course): void {
         this.courses.forEach(
 
             function(course,index,all) {
-                if(courseToDelete.id == course.id)all.splice(index, 1);
+                
+                if(courseToRemove.id == course.id)all.splice(index, 1);
             }
 
         ); 
     } 
-
-    getCourses() : Course[] {
-        return this.courses;
-    }
 }

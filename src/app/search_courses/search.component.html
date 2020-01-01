@@ -23,7 +23,6 @@
                         [(ngModel)] = "searchRates[i]">
                 </span>
             </span>
-            {{searchRates | json}}
         </div>
 
         <div>
@@ -36,7 +35,6 @@
                         [(ngModel)] = "searchSemesters[i]">
                 </span>
             </span>
-            {{searchSemesters | json}}
         </div>
 
         <div>
@@ -49,7 +47,6 @@
                         [(ngModel)] = "searchEtcss[i]">
                 </span>
             </span>
-            {{searchEtcss | json}}
         </div>
 
         <button (click)="onSearch()" class="btn btn-primary btn-sm mt-3">Search!</button>

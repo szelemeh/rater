@@ -2,10 +2,8 @@
     <div class = "row">
         <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 ">
             <ul class="list-group ul-no-bullets">
-                SearchRates{{searchRates | json}}<br>
-                SearchSemesters{{searchSemesters | json}}<br>
-                SearchEtcss{{searchEtcss | json}}
-                <li *ngFor="let course of (getCourses() 
+                
+                <li *ngFor="let course of (courses 
                             | nameSearch: searchText 
                             | rateSearch: searchRates
                             | semesterSearch: searchSemesters

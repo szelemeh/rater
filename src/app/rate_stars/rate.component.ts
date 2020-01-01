@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild, ElementRef, Output, OnInit, EventEmitter} from '@angular/core'
+import { CourseFilterService } from '../services/course-filter.service';
 
 
 export enum Fill {
@@ -20,7 +21,7 @@ export class RateComponent {
     userRate: number = null;
     @Input() currentRate: number;
     showingRate: number = null;
-    rateReactive: boolean = false;
+    rateReactive: boolean = true;
 
     @ViewChild('first', {static: false}) first: ElementRef;
     @ViewChild('second', {static: false}) second: ElementRef;

@@ -1,9 +1,12 @@
-<div #card class="card text-center col-8 offset-2">
-    <p class="card-text">{{course.description}}</p>
-    <p class="card-text">The subject is tought in {{course.semester}} semester</p>
-    <p class="card-text">Number of ETCS: {{course.numberOfEtcs}}</p>
-    <br>
-    <p #ratemessage class="card-text">Course rate:</p>
+<div #card class="mt-4 card text-center col-8 offset-2" *ngIf="course != null">
+    <h1>{{course.courseName}}</h1>
+    <div>
+        <p class="card-text">{{course.description}}</p>
+        <p class="card-text">The subject is tought in {{course.semester}} semester</p>
+        <p class="card-text">Number of ETCS: {{course.numberOfEtcs}}</p>
+        <br>
+        <p #ratemessage class="card-text">Course rate:</p>
+    </div>
 
     <app-rate 
         [currentRate]="course.rate" 

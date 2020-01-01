@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core'
 
 import { Course } from '../models/Course'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,42 +13,18 @@ import { Course } from '../models/Course'
 })
 export class CourseItemComponent {
     @ViewChild('card', {static: false}) card: ElementRef;
-    @ViewChild('ratemessage', {static: false}) rateMessage: ElementRef;
     @Input() course: Course;
     isCollapsed = true;
     @Output() removeCourse = new EventEmitter<Course>();
+
+    constructor(private router: Router) {}
 
     remove() {
         this.removeCourse.emit(this.course);
     }
 
-    changeState(){
-        if(this.isCollapsed){
-            setTimeout(() => {
-                this.card.nativeElement.classList.remove('collapse');
-            }, 100);
-            
-            this.isCollapsed = false
-        }
-        else {
-            setTimeout(() => {
-                this.card.nativeElement.classList.add('collapse');
-            }, 100);
-            this.isCollapsed = true;
-        }
-        
+    goToDetails() {
+        this.router.navigate(['course_details', this.course.id]);
     }
-
-    changeRateMessage() {
-        this.rateMessage.nativeElement.innerHTML = "Your rate: ";
-    }
-    addNewRate(newRate: number) {
-        //implement the function
-    }
-
-    onMore() {
-        //go to course details
-    }
-
     
 }

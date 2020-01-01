@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, ElementRef, Output, EventEmitter} from '@a
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Course, ClassForm } from '../models/Course'
 import { CourseService } from '../services/course.service'
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -25,7 +26,7 @@ export class AddCourseComponent {
         description: null
     };
     
-    constructor(private coursesService: CourseService) {
+    constructor(private coursesService: CourseService, private router: Router) {
         this.form = new FormGroup({
             courseName: new FormControl(
                 "", [
@@ -74,12 +75,15 @@ export class AddCourseComponent {
         });
     }
 
-    onSubmit() {
+    onSubmit() {        
         if(this.form.valid){
             this.fillOutCourse();
             this.coursesService.addCourse(this.course);
             this.emptyCourse();
+            
+            this.router.navigate(['/home']);
         }
+
     }
 
     fillOutCourse() {

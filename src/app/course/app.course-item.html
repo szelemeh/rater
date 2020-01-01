@@ -1,21 +1,11 @@
 <div class="card text-center">
-    <div class="card-header" (click)="changeState()">
-
+    <div class="card-header" (click)="goToDetails()">
+        
         <img width="30" class="float-left" src="{{course.imagePath}}">
+        <h5 class="card-title float-left ml-3"> {{course.courseName}}</h5>
 
         <button click-stop-propagation type="button" class="close test" aria-label="Close" (click)="remove()" >
             <span aria-hidden="true">&times;</span>
         </button>
-        
-        <h5 class="card-title float-left ml-3"> {{course.courseName}}</h5>
-    </div>
-    <div #card class="card-body collapse">
-      <p class="card-text">{{course.description}}</p>
-      <p class="card-text">The subject is tought in {{course.semester}} semester</p>
-      <p class="card-text">Number of ETCS: {{course.numberOfEtcs}}</p>
-      <br>
-      <p #ratemessage class="card-text">Course rate:</p>
-      <app-rate [currentRate]="course.rate" (addNewRate)="addNewRate($event)" (changedRate)="changeRateMessage($event)"></app-rate>
-      <a href="#" (click)="onMore()" class="btn btn-primary m-2">More...</a>
     </div>
   </div>
