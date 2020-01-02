@@ -19,9 +19,15 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
-  declarations: [
+declarations: [
     AppComponent,
     routingComponents,
     CourseListComponent,
@@ -37,9 +43,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     NavigationComponent,
     PageNotFoundComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
-  providers: [CourseService],
-  bootstrap: [AppComponent]
+    LoginComponent,
+    SignupComponent,
+],
+imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    ReactiveFormsModule, 
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule, // do obsługi autentykacji
+    AngularFirestoreModule, // do obslugi baz danych
+    AngularFireDatabaseModule // do obslugi baz danych
+],
+    providers: [CourseService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

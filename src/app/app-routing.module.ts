@@ -5,6 +5,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddCourseComponent } from './add_course_form/add-course.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -13,9 +15,10 @@ const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'course_details/:id', component: CourseDetailsComponent},
     {path: 'add_course', component: AddCourseComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'signup', component: SignupComponent},
     {path: '404', component: PageNotFoundComponent},
     {path: '**', redirectTo: '404', pathMatch:'full'}
-
 ];
 
 @NgModule({
