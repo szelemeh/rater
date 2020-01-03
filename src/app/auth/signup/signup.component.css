@@ -143,3 +143,11 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+/* valid&invalid: */
+input:invalid { 
+    border: red solid !important;
+}
+input:valid {
+  border: rgb(16, 167, 16) solid !important;
+}

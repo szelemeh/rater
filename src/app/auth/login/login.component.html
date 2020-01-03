@@ -1,0 +1,14 @@
+<div class="login-page">
+    <div class="alert-danger text-center" *ngIf="isError()">
+        {{errorMessage}}
+    </div>
+    <div class="form">
+        <h4 class="title mb-4">Log in</h4>
+        <form class="login-form" (ngSubmit)="loginUser()">
+            <input [(ngModel)]="email" name="email" type="email" placeholder="your email" required/>
+            <input [(ngModel)]="password" name="password" type="password" placeholder="password" required/>
+            <button type="submit">login</button>
+            <p class="message">Not registered? <a routerLink="/signup">Create an account</a></p>
+        </form>
+    </div>
+</div>

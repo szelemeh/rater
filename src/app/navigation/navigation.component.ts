@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+    private user: firebase.User;
 
-  ngOnInit() {
-  }
+    constructor(
+        private authService: AuthService,
+    ) { }
+
+    ngOnInit() {
+        this.authService.getAuthState()
+            .subscribe(user => {
+                this.user = user;
+            })
+    }
+
+    getUserEmail() {
+        return this.user.email;
+    }
+
+    logout() {
+        this.authService.logoutUser();
+    }
 
 }
